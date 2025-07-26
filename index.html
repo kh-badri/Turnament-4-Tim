@@ -62,6 +62,54 @@
             padding-bottom: 10px;
         }
 
+        /* Team Setup Styles */
+        .team-setup {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border-radius: 12px;
+            padding: 30px;
+            border: 2px solid #e2e8f0;
+        }
+
+        .setup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .team-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .team-input-group label {
+            font-weight: bold;
+            color: #4a5568;
+            font-size: 1.1em;
+        }
+
+        .team-name-input {
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .team-name-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .team-name-input:hover {
+            border-color: #cbd5e0;
+        }
+
         /* Group Stage Styles */
         .matches-grid {
             display: grid;
@@ -319,6 +367,34 @@
             <p>Sistem Liga + Knockout Stage</p>
         </div>
 
+        <!-- Team Setup -->
+        <div class="tournament-section">
+            <h2 class="section-title">⚙️ Setup Tim</h2>
+            <div class="team-setup">
+                <div class="setup-grid">
+                    <div class="team-input-group">
+                        <label>Tim 1:</label>
+                        <input type="text" id="team1-name" class="team-name-input" value="Tottenham" placeholder="Nama Tim 1">
+                    </div>
+                    <div class="team-input-group">
+                        <label>Tim 2:</label>
+                        <input type="text" id="team2-name" class="team-name-input" value="City" placeholder="Nama Tim 2">
+                    </div>
+                    <div class="team-input-group">
+                        <label>Tim 3:</label>
+                        <input type="text" id="team3-name" class="team-name-input" value="PSG" placeholder="Nama Tim 3">
+                    </div>
+                    <div class="team-input-group">
+                        <label>Tim 4:</label>
+                        <input type="text" id="team4-name" class="team-name-input" value="Ajax" placeholder="Nama Tim 4">
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button class="calculate-btn" onclick="updateTeamNames()">💾 Simpan Nama Tim</button>
+                </div>
+            </div>
+        </div>
+
         <!-- Group Stage -->
         <div class="tournament-section">
             <h2 class="section-title">📋 Fase Grup</h2>
@@ -326,84 +402,84 @@
                 <div class="match">
                     <div class="match-header">Matchday 1</div>
                     <div class="match-teams">
-                        <div class="team">Tottenham</div>
+                        <div class="team" id="match1-team1-name">Tottenham</div>
                         <div>
                             <div class="vs">VS</div>
                             <input type="number" class="score-input" id="match1-team1" min="0" placeholder="0">
                             <span>-</span>
                             <input type="number" class="score-input" id="match1-team2" min="0" placeholder="0">
                         </div>
-                        <div class="team">City</div>
+                        <div class="team" id="match1-team2-name">City</div>
                     </div>
                 </div>
 
                 <div class="match">
                     <div class="match-header">Matchday 1</div>
                     <div class="match-teams">
-                        <div class="team">PSG</div>
+                        <div class="team" id="match2-team1-name">PSG</div>
                         <div>
                             <div class="vs">VS</div>
                             <input type="number" class="score-input" id="match2-team1" min="0" placeholder="0">
                             <span>-</span>
                             <input type="number" class="score-input" id="match2-team2" min="0" placeholder="0">
                         </div>
-                        <div class="team">Ajax</div>
+                        <div class="team" id="match2-team2-name">Ajax</div>
                     </div>
                 </div>
 
                 <div class="match">
                     <div class="match-header">Matchday 2</div>
                     <div class="match-teams">
-                        <div class="team">Tottenham</div>
+                        <div class="team" id="match3-team1-name">Tottenham</div>
                         <div>
                             <div class="vs">VS</div>
                             <input type="number" class="score-input" id="match3-team1" min="0" placeholder="0">
                             <span>-</span>
                             <input type="number" class="score-input" id="match3-team2" min="0" placeholder="0">
                         </div>
-                        <div class="team">PSG</div>
+                        <div class="team" id="match3-team2-name">PSG</div>
                     </div>
                 </div>
 
                 <div class="match">
                     <div class="match-header">Matchday 2</div>
                     <div class="match-teams">
-                        <div class="team">City</div>
+                        <div class="team" id="match4-team1-name">City</div>
                         <div>
                             <div class="vs">VS</div>
                             <input type="number" class="score-input" id="match4-team1" min="0" placeholder="0">
                             <span>-</span>
                             <input type="number" class="score-input" id="match4-team2" min="0" placeholder="0">
                         </div>
-                        <div class="team">Ajax</div>
+                        <div class="team" id="match4-team2-name">Ajax</div>
                     </div>
                 </div>
 
                 <div class="match">
                     <div class="match-header">Matchday 3</div>
                     <div class="match-teams">
-                        <div class="team">Tottenham</div>
+                        <div class="team" id="match5-team1-name">Tottenham</div>
                         <div>
                             <div class="vs">VS</div>
                             <input type="number" class="score-input" id="match5-team1" min="0" placeholder="0">
                             <span>-</span>
                             <input type="number" class="score-input" id="match5-team2" min="0" placeholder="0">
                         </div>
-                        <div class="team">Ajax</div>
+                        <div class="team" id="match5-team2-name">Ajax</div>
                     </div>
                 </div>
 
                 <div class="match">
                     <div class="match-header">Matchday 3</div>
                     <div class="match-teams">
-                        <div class="team">City</div>
+                        <div class="team" id="match6-team1-name">City</div>
                         <div>
                             <div class="vs">VS</div>
                             <input type="number" class="score-input" id="match6-team1" min="0" placeholder="0">
                             <span>-</span>
                             <input type="number" class="score-input" id="match6-team2" min="0" placeholder="0">
                         </div>
-                        <div class="team">PSG</div>
+                        <div class="team" id="match6-team2-name">PSG</div>
                     </div>
                 </div>
             </div>
@@ -534,8 +610,111 @@
     </div>
 
     <script>
-        const teams = ['Tottenham', 'City', 'PSG', 'Ajax'];
+        let teams = ['Tottenham', 'City', 'PSG', 'Ajax'];
         let standings = {};
+        let teamData = {
+            team1: 'Tottenham',
+            team2: 'City', 
+            team3: 'PSG',
+            team4: 'Ajax'
+        };
+
+        function updateTeamNames() {
+            // Get new team names from inputs
+            teamData.team1 = document.getElementById('team1-name').value || 'Tim 1';
+            teamData.team2 = document.getElementById('team2-name').value || 'Tim 2';
+            teamData.team3 = document.getElementById('team3-name').value || 'Tim 3';
+            teamData.team4 = document.getElementById('team4-name').value || 'Tim 4';
+            
+            // Update teams array
+            teams = [teamData.team1, teamData.team2, teamData.team3, teamData.team4];
+            
+            // Update match displays
+            document.getElementById('match1-team1-name').textContent = teamData.team1;
+            document.getElementById('match1-team2-name').textContent = teamData.team2;
+            document.getElementById('match2-team1-name').textContent = teamData.team3;
+            document.getElementById('match2-team2-name').textContent = teamData.team4;
+            document.getElementById('match3-team1-name').textContent = teamData.team1;
+            document.getElementById('match3-team2-name').textContent = teamData.team3;
+            document.getElementById('match4-team1-name').textContent = teamData.team2;
+            document.getElementById('match4-team2-name').textContent = teamData.team4;
+            document.getElementById('match5-team1-name').textContent = teamData.team1;
+            document.getElementById('match5-team2-name').textContent = teamData.team4;
+            document.getElementById('match6-team1-name').textContent = teamData.team2;
+            document.getElementById('match6-team2-name').textContent = teamData.team3;
+            
+            // Reset standings and table
+            initializeStandings();
+            resetScores();
+            
+            // Show success message
+            showNotification('✅ Nama tim berhasil disimpan!', 'success');
+        }
+
+        function resetScores() {
+            // Reset all score inputs
+            document.querySelectorAll('.score-input').forEach(input => {
+                input.value = '';
+            });
+            
+            // Reset table
+            const tableBody = document.getElementById('leagueTable');
+            tableBody.innerHTML = `
+                <tr><td>1</td><td class="team-name">-</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>2</td><td class="team-name">-</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>3</td><td class="team-name">-</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                <tr><td>4</td><td class="team-name">-</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+            `;
+            
+            // Reset knockout stage
+            document.getElementById('sf1-team1').textContent = 'Peringkat 1';
+            document.getElementById('sf1-team2').textContent = 'Peringkat 4';
+            document.getElementById('sf2-team1').textContent = 'Peringkat 2';
+            document.getElementById('sf2-team2').textContent = 'Peringkat 3';
+            document.getElementById('final-team1').textContent = 'Menang SF1';
+            document.getElementById('final-team2').textContent = 'Menang SF2';
+            document.getElementById('third-team1').textContent = 'Kalah SF1';
+            document.getElementById('third-team2').textContent = 'Kalah SF2';
+        }
+
+        function showNotification(message, type) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 25px;
+                background: ${type === 'success' ? '#48bb78' : '#f56565'};
+                color: white;
+                border-radius: 8px;
+                font-weight: bold;
+                z-index: 1000;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                animation: slideIn 0.3s ease;
+            `;
+            notification.textContent = message;
+            
+            // Add animation keyframes
+            if (!document.querySelector('#notification-styles')) {
+                const style = document.createElement('style');
+                style.id = 'notification-styles';
+                style.textContent = `
+                    @keyframes slideIn {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            document.body.appendChild(notification);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
 
         function initializeStandings() {
             teams.forEach(team => {
@@ -555,14 +734,14 @@
         function calculateTable() {
             initializeStandings();
 
-            // Match results mapping
+            // Match results mapping with dynamic team names
             const matches = [
-                { team1: 'Tottenham', team2: 'City', score1: 'match1-team1', score2: 'match1-team2' },
-                { team1: 'PSG', team2: 'Ajax', score1: 'match2-team1', score2: 'match2-team2' },
-                { team1: 'Tottenham', team2: 'PSG', score1: 'match3-team1', score2: 'match3-team2' },
-                { team1: 'City', team2: 'Ajax', score1: 'match4-team1', score2: 'match4-team2' },
-                { team1: 'Tottenham', team2: 'Ajax', score1: 'match5-team1', score2: 'match5-team2' },
-                { team1: 'City', team2: 'PSG', score1: 'match6-team1', score2: 'match6-team2' }
+                { team1: teamData.team1, team2: teamData.team2, score1: 'match1-team1', score2: 'match1-team2' },
+                { team1: teamData.team3, team2: teamData.team4, score1: 'match2-team1', score2: 'match2-team2' },
+                { team1: teamData.team1, team2: teamData.team3, score1: 'match3-team1', score2: 'match3-team2' },
+                { team1: teamData.team2, team2: teamData.team4, score1: 'match4-team1', score2: 'match4-team2' },
+                { team1: teamData.team1, team2: teamData.team4, score1: 'match5-team1', score2: 'match5-team2' },
+                { team1: teamData.team2, team2: teamData.team3, score1: 'match6-team1', score2: 'match6-team2' }
             ];
 
             matches.forEach(match => {
